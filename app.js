@@ -97,10 +97,42 @@ const productSchema = mongoose.Schema(
 );
 
 /**
+ * Mongoose consume two middleware for saving data
+ * -----------------------------------------------
+ * pre()
+ * post()
+ */
+
+// pre() method
+productSchema.pre("save", function (next) {
+  // console.log("Pre middleware for saving data");
+
+  if (this.quantity === 0) {
+    this.status = "Out of Stock";
+  }
+  next();
+});
+
+// post() method
+productSchema.post("save", function (doc, next) {
+  // console.log("Post middleware for saving data");
+  // console.log(doc); // whole insertion data
+
+  console.log(`Saving data for •${this.name}• complete`);
+  next();
+});
+
+// methods
+productSchema.methods.logger = function () {
+  console.log(this); // whole insertion data
+};
+
+/**
  * Mongoose query definition
  * -------------------------
  * SCHEMA => MODEL => QUERY
  */
+
 const Product = mongoose.model("Product", productSchema);
 
 // connection
@@ -112,18 +144,20 @@ app.post("/api/v1/product", async (req, res, next) => {
   try {
     /**
      * Two insertion method:
-     * 1. Save()
-     * 2. Create()
+     * 1. save()
+     * 2. create()
      */
 
     /* 1. Save method */
     // changes occur within object
     const product = new Product(req.body);
 
-    if(product.quantity === 0){
-      product.status = "Out of Stock";
-    }
+    // if (product.quantity === 0) {
+    //   product.status = "Out of Stock";
+    // }
+
     const result = await product.save();
+    result.logger();
 
     /* 2. Create method */
     // const result = await Product.create(req.body);
