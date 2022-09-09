@@ -1,0 +1,23 @@
+{
+   "name": "inventory-management-acc",
+   "version": "1.0.0",
+   "description": "Inventory Management on ACC refactoring of backend",
+   "main": "server.js",
+   "scripts": {
+      "development": "NODE_ENV=development nodemon server",
+      "production": "NODE_ENV=production node server"
+   },
+   "dependencies": {
+      "colors": "^1.4.0",
+      "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "mongoose": "^5.12.2"
+   },
+   "devDependencies": {
+      "nodemon": "^2.0.7",
+      "win-node-env": "^0.6.1"
+   },
+   "author": "Hasibul Islam",
+   "license": "ISC"
+}
