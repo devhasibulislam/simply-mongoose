@@ -3,6 +3,7 @@ const {
   postAProducts,
   updateProductService,
   bulkUpdateProductsServices,
+  deleteProductService,
 } = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
@@ -114,6 +115,21 @@ exports.updateAProduct = async (req, res, next) => {
 exports.bulkUpdateProducts = async (req, res, next) => {
   try {
     const result = await bulkUpdateProductsServices(req.body);
+
+    res.status(202).json({
+      success: true,
+      message: "Accepted",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// delete a product
+exports.deleteAProduct = async (req, res, next) => {
+  try {
+    const result = await deleteProductService(req.params.id);
 
     res.status(202).json({
       success: true,

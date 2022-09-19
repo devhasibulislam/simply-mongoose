@@ -7,13 +7,14 @@ const {
   postAProduct,
   updateAProduct,
   bulkUpdateProducts,
+  deleteAProduct,
 } = require("../controllers/product.controller");
 
 // router level connection
 const router = express.Router();
 
-router.route("/").get(getProducts).post(postAProduct);
 router.route("/bulk-update").patch(bulkUpdateProducts);
-router.route("/:id").patch(updateAProduct);
+router.route("/").get(getProducts).post(postAProduct);
+router.route("/:id").patch(updateAProduct).delete(deleteAProduct);
 
 module.exports = router;
