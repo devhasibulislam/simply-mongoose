@@ -4,6 +4,7 @@ const {
   updateProductService,
   bulkUpdateProductsServices,
   deleteProductService,
+  bulkDeleteProductsService,
 } = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
@@ -140,3 +141,18 @@ exports.deleteAProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+// bulk deletion of products
+exports.bulkDeleteProducts = async(req, res, next) => {
+  try {
+    const result = await bulkDeleteProductsService(req.body);
+
+    res.status(202).json({
+      success: true,
+      message: "Accepted",
+      data: result
+    })
+  } catch (error) {
+    next(error);
+  }
+}

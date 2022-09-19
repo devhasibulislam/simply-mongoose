@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Rajamudi",
+    "description": "An exotic rice indigenously available in the south part of Karnataka, which has the traditional trace to Mysore palace. Rajamudi Rice has good.",
+    "price": 110,
+    "unit": "kg",
+    "quantity": 3,
+    "status": "Discontinued"
+  },
+  {
+    "name": "Ambemohar",
+    "description": "A short-grained aromatic rice and has the most economical and versatile cooking nature, which is why it is the most, preferred rice across the globe.",
+    "price": 100,
+    "unit": "kg",
+    "quantity": 0,
+    "status": "Out of Stock"
+  },
+  {
+    "name": "Yellow split Pigeon peas",
+    "description": "A yellow coloured lentil flat on one side, oblong in shape, used widely in Indian cooking.",
+    "price": 699,
+    "unit": "kg",
+    "quantity": 5,
+    "status": "In Stock"
+  },
+  {
+    "name": "Red lentils",
+    "description": "Are tiny, reddish-orange legumes that cook quickly, making them a perfect ingredient for quick, healthy dinners.",
+    "price": 1019,
+    "unit": "kg",
+    "quantity": 0,
+    "status": "Out of Stock"
+  },
+  {
+    "name": "Split & skinned black gram",
+    "description": "Urad dal, also known as white lentil or black lentil is a kind of bean that is grown in the southern parts of Asia.",
+    "price": 451,
+    "unit": "kg",
+    "quantity": 1,
+    "status": "In Stock"
+  },
+  {
+    "name": "Yellow lentils",
+    "description": "Are most commonly used in India as Dal. Although yellow lentils look similar to yellow split peas, they are in no way the same.",
+    "price": 950,
+    "unit": "kg",
+    "quantity": 1,
+    "status": "Discontinued"
+  },
+  {
+    "name": "Faba Beans",
+    "description": "Vicia faba, also known in the culinary sense as the broad bean, fava bean, or faba bean, is a species of vetch, a flowering plant in the pea and bean family Fabaceae. It is widely cultivated as a crop for human consumption, and also as a cover crop.",
+    "price": 2950,
+    "unit": "kg",
+    "quantity": 0,
+    "status": "Out of Stock"
+  },
+  {
+    "name": "Mustard oil MT-4",
+    "description": "It is produced from the seeds of the mustard plant, is a common ingredient in Indian cuisine.",
+    "price": 1478,
+    "unit": "litre",
+    "quantity": 5,
+    "status": "In Stock"
+  },
+  {
+    "name": "Groundnut oil GT-3",
+    "description": "Peanut oil, also known as groundnut oil or arachis oil, is a vegetable oil derived from peanuts.",
+    "price": 880,
+    "unit": "litre",
+    "quantity": 5,
+    "status": "In Stock"
+  }
+]
