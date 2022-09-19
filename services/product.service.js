@@ -31,7 +31,7 @@ exports.updateProductService = async (pid, data) => {
   return result;
 };
 
-// bulk update existing product
+// bulk update existing products
 exports.bulkUpdateProductsServices = async (data) => {
   // const result = await Product.updateMany(
   //   { _id: data.ids },
@@ -73,5 +73,11 @@ exports.bulkUpdateProductsServices = async (data) => {
 // delete a product
 exports.deleteProductService = async (pid) => {
   const result = await Product.findByIdAndDelete(pid);
+  return result;
+};
+
+// bulk delete existing products
+exports.bulkDeleteProductsService = async (data) => {
+  const result = await Product.deleteMany({ _id: data.ids });
   return result;
 };
