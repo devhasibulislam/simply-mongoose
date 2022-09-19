@@ -1,4 +1,8 @@
-const { getAllProducts, postAProducts } = require("../services/product.service");
+const {
+  getAllProducts,
+  postAProducts,
+  updateProductService,
+} = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
   try {
@@ -83,6 +87,19 @@ exports.postAProduct = async (req, res, next) => {
 
     // console.log(req.body);
 
+    res.status(202).json({
+      success: true,
+      message: "Accepted",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateAProduct = async (req, res, next) => {
+  try {
+    const result = await updateProductService(req.params.id, req.body);
     res.status(202).json({
       success: true,
       message: "Accepted",
