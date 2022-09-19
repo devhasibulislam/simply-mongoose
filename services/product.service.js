@@ -33,11 +33,39 @@ exports.updateProductService = async (pid, data) => {
 
 // bulk update existing product
 exports.bulkUpdateProductsServices = async (data) => {
-  const result = await Product.updateMany(
-    { _id: data.ids },
-    { $inc: data.data },
-    { runValidators: true }
-  );
+  // const result = await Product.updateMany(
+  //   { _id: data.ids },
+  //   { $inc: data.data },
+  //   { runValidators: true }
+  // );
+
+  /* example:
+    {
+      "ids": [
+          "631c0b48ee80c32cf05f05a5",
+          "631c0c1e589ed42e14180abd"
+      ],
+      "data": {
+          "price": 3
+      }
+    }
+  */
+
+  const prods = [];
+  data.products.forEach((product) => {
+    prods.push(
+      Product.updateOne(
+        { _id: product.id },
+        {
+          $set: { name: product.data.name },
+          $inc: { price: product.data.price },
+        },
+        { runValidators: true }
+      )
+    );
+  });
+
+  const result = await Promise.all(prods);
 
   return result;
 };
