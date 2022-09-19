@@ -2,6 +2,7 @@ const {
   getAllProducts,
   postAProducts,
   updateProductService,
+  bulkUpdateProductsServices,
 } = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
@@ -100,6 +101,20 @@ exports.postAProduct = async (req, res, next) => {
 exports.updateAProduct = async (req, res, next) => {
   try {
     const result = await updateProductService(req.params.id, req.body);
+    res.status(202).json({
+      success: true,
+      message: "Accepted",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.bulkUpdateProducts = async (req, res, next) => {
+  try {
+    const result = await bulkUpdateProductsServices(req.body);
+
     res.status(202).json({
       success: true,
       message: "Accepted",

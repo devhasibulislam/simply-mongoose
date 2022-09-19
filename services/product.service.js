@@ -30,3 +30,14 @@ exports.updateProductService = async (pid, data) => {
 
   return result;
 };
+
+// bulk update existing product
+exports.bulkUpdateProductsServices = async (data) => {
+  const result = await Product.updateMany(
+    { _id: data.ids },
+    { $inc: data.data },
+    { runValidators: true }
+  );
+
+  return result;
+};
