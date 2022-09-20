@@ -14,6 +14,12 @@ exports.postAProducts = async (data) => {
   return result;
 };
 
+// insert multiple products
+exports.bulkInsertProductServices = async (data) => {
+  const result = await Product.insertMany(data);
+  return result;
+};
+
 // update an existing product
 exports.updateProductService = async (pid, data) => {
   /* approach 1: good but not much better */
@@ -73,6 +79,12 @@ exports.bulkUpdateProductsServices = async (data) => {
 // delete a product
 exports.deleteProductService = async (pid) => {
   const result = await Product.findByIdAndDelete(pid);
+  return result;
+};
+
+// remove all products
+exports.removeAllProductServices = async (data) => {
+  const result = await Product.deleteMany({});
   return result;
 };
 

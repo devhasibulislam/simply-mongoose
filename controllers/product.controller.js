@@ -5,6 +5,8 @@ const {
   bulkUpdateProductsServices,
   deleteProductService,
   bulkDeleteProductsService,
+  bulkInsertProductServices,
+  removeAllProductServices,
 } = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
@@ -100,6 +102,20 @@ exports.postAProduct = async (req, res, next) => {
   }
 };
 
+exports.bulkInsertProducts = async (req, res, next) => {
+  try {
+    const result = await bulkInsertProductServices(req.body);
+
+    res.status(201).json({
+      success: true,
+      message: "Created",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.updateAProduct = async (req, res, next) => {
   try {
     const result = await updateProductService(req.params.id, req.body);
@@ -142,17 +158,32 @@ exports.deleteAProduct = async (req, res, next) => {
   }
 };
 
+// remove all products
+exports.removeAllProducts = async (req, res, next) => {
+  try {
+    const result = await removeAllProductServices(req.body);
+
+    res.status(202).json({
+      success: true,
+      message: "Accepted",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // bulk deletion of products
-exports.bulkDeleteProducts = async(req, res, next) => {
+exports.bulkDeleteProducts = async (req, res, next) => {
   try {
     const result = await bulkDeleteProductsService(req.body);
 
     res.status(202).json({
       success: true,
       message: "Accepted",
-      data: result
-    })
+      data: result,
+    });
   } catch (error) {
     next(error);
   }
-}
+};
