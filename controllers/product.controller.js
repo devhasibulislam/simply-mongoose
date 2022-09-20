@@ -7,6 +7,7 @@ const {
   bulkDeleteProductsService,
   bulkInsertProductServices,
   removeAllProductServices,
+  getLimitedSpecificProductServices,
 } = require("../services/product.service");
 
 exports.getProducts = async (req, res, next) => {
@@ -67,6 +68,21 @@ exports.getProducts = async (req, res, next) => {
     next();
   }
 };
+
+exports.getLimitedSpecificProducts = async(req, res, next) => {
+  try {
+    const result = await getLimitedSpecificProductServices(req.query);
+
+    res.status(200).json({
+      success: true,
+      message: "OK",
+      total: result.length,
+      data: result
+    })
+  } catch (error) {
+    next(error);
+  }
+}
 
 exports.postAProduct = async (req, res, next) => {
   try {

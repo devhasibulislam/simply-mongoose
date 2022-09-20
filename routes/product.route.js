@@ -11,6 +11,7 @@ const {
   bulkDeleteProducts,
   bulkInsertProducts,
   removeAllProducts,
+  getLimitedSpecificProducts,
 } = require("../controllers/product.controller");
 
 // router level connection
@@ -20,6 +21,7 @@ router.route("/bulk-insert").post(bulkInsertProducts);
 router.route("/bulk-update").patch(bulkUpdateProducts);
 router.route("/delete-all").delete(removeAllProducts);
 router.route("/bulk-delete").delete(bulkDeleteProducts);
+router.route("/limited-specific").get(getLimitedSpecificProducts);
 
 router.route("/").get(getProducts).post(postAProduct);
 

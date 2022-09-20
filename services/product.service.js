@@ -7,6 +7,29 @@ exports.getAllProducts = async () => {
   return products.reverse();
 };
 
+// display limited and specific products
+exports.getLimitedSpecificProductServices = async (queries) => {
+  const { status, limit, page, sort, fields } = queries;
+  // console.log(sort.split(",").join(" "));
+  // console.log(fields.split(",").join(" "));
+
+  /* sorting - ascending */
+  // const result = await Product.find({ status }).sort(sort);
+
+  /* sorting - descending */
+  // const result = await Product.find({ status }).sort([[sort, -1]]);
+
+  /* fields to be shown as a result */
+  // const result = await Product.find({ status })
+  //   .select(fields.split(",").join(" "))
+  //   .sort(sort);
+
+  const result = await Product.find({})
+    .skip((Number(page) - 1) * Number(limit))
+    .limit(Number(limit));
+  return result;
+};
+
 // insert a new product
 exports.postAProducts = async (data) => {
   const product = new Product(data);
